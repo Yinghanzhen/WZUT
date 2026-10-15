@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Mapper.OrderMapper">
+    <select id="list" resultType="com.example.demo.pojo.Order">
+        select * from ordermanage
+        <where>
+            <if test="orderID != null">
+                OrderID like concat('%',#{orderID},'%')
+            </if>
+            <if test="userID != null">
+                and UserID like concat('%',#{userID},'%')
+            </if>
+            <if test="scenicName != null">
+                and ScenicName like concat('%',#{scenicName},'%')
+            </if>
+        </where>
+    </select>
+</mapper>
